@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string name="action_settings">Settings</string>
+    <string name="tvWelcome">Hangman!</string>
+    <string name="bPlay">Play</string>
+    <string name="bLogin">Login</string>
+    <string name="title_activity_lobby">LobbyActivity</string>
+    <string name="bInvite">Invite Friends</string>
+    <string name="bFindGame">Find Game</string>
+    <string name="title_activity_game_room">GameRoomActivity</string>
+    <string name="tvTitleJoinGame">Play against a random opponent</string>
+    <string name="title_activity_friend_list">FriendListActivity</string>
+    <string name="tvTitleInviteFriend">Invite a friend to play</string>
+</resources>

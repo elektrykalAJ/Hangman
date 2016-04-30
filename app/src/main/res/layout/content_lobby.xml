@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.school.ee.games.hangman.LobbyActivity"
+    tools:showIn="@layout/activity_lobby"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bFindGame"
+        android:id="@+id/bFindGame"
+        android:background="@drawable/buttons"
+        android:padding="10dp" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
+
+    <Button
+        android:id="@+id/bInvite"
+        android:text="@string/bInvite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:padding="10dp" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
+
+    <TextView
+        android:id="@+id/tvCurrentGames"
+        android:text="Current Games:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+
+         />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Current Game 1"
+                android:id="@+id/bCurrGame1"
+                android:background="@drawable/buttons" />
+
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Current Game 2"
+                android:id="@+id/bCurrGame2"
+                android:background="@drawable/buttons" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Current Game 3"
+                android:id="@+id/bCurrGame3"
+                android:background="@drawable/buttons" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
+            <ListView
+                android:id="@+id/lvCurrentGames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:choiceMode="singleChoice"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
