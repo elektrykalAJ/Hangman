@@ -19,6 +19,9 @@ import android.view.View.OnTouchListener;
 
 public class TitleActivity extends AppCompatActivity {
 
+
+    // Testing some changes
+
     public Button bPlay;
     public Button bLogin;
     public TextView tvWelcome;
