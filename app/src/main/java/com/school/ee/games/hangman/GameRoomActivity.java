@@ -1,17 +1,14 @@
 package com.school.ee.games.hangman;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 import android.view.View.OnTouchListener;
 
 public class GameRoomActivity extends AppCompatActivity {
@@ -38,9 +35,12 @@ public class GameRoomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int thisButtonId = v.getId();
+                String gameId = ((Button)v).getText().toString();
                 switch (thisButtonId){
                     default:
                         //makeToast("Invalid View Id found!");
+
+                        launchGamePlay(gameId);
                         break;
                 }
             }
@@ -72,6 +72,10 @@ public class GameRoomActivity extends AppCompatActivity {
         g2.setOnTouchListener(touchListener);
         g3.setOnTouchListener(touchListener);
 
+        g1.setOnClickListener(bListener);
+        g2.setOnClickListener(bListener);
+        g3.setOnClickListener(bListener);
+
         buttons = new Button[3];
         buttons[0] = g1;
         buttons[1] = g2;
@@ -88,13 +92,20 @@ public class GameRoomActivity extends AppCompatActivity {
         for(int i=0;i<buttons.length;i++){
             b = buttons[i];
             if(b.getId()==id){
-                bgResource = getResources().getDrawable(R.drawable.buttons2);
+                bgResource = getResources().getDrawable(R.drawable.buttons_selected);
             }
             else{
                 bgResource = getResources().getDrawable(R.drawable.buttons);
             }
             b.setBackground(bgResource);
         }
+    }
+
+    public void launchGamePlay(String gameId){
+        Intent intent = new Intent(getBaseContext(),GamePlayActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        //overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
     }
 
 }

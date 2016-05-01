@@ -3,8 +3,6 @@ package com.school.ee.games.hangman;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
@@ -69,12 +67,12 @@ public class TitleActivity extends AppCompatActivity {
         OnTouchListener touchListener = new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction()!= MotionEvent.ACTION_DOWN){
-                    int thisButtonId = v.getId();
-                    updateButtonBackground(thisButtonId);
+                int action = event.getActionMasked();
+                if (action == MotionEvent.ACTION_DOWN) {
+                    v.setBackgroundResource(R.drawable.buttons_selected);
                 }
-                else{
-                    updateButtonBackground(0);
+                if (action == MotionEvent.ACTION_UP) {
+                    v.setBackgroundResource(R.drawable.buttons);
                 }
                 return false;
             }
@@ -108,7 +106,7 @@ public class TitleActivity extends AppCompatActivity {
         for(int i=0;i<buttons.length;i++){
             b = buttons[i];
             if(b.getId()==id){
-                bgResource = getResources().getDrawable(R.drawable.buttons2);
+                bgResource = getResources().getDrawable(R.drawable.buttons_selected);
             }
             else{
                 bgResource = getResources().getDrawable(R.drawable.buttons);
@@ -126,7 +124,10 @@ public class TitleActivity extends AppCompatActivity {
     }
 
     public void launchLogin(){
-        makeToast("Coming Soon!");
+        Intent intent = new Intent(getBaseContext(),LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        //overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
 //        Intent intent = new Intent(getBaseContext(),LobbyActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 //        startActivity(intent);
