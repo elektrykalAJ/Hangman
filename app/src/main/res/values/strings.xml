@@ -11,4 +11,12 @@
     <string name="tvTitleJoinGame">Play against a random opponent</string>
     <string name="title_activity_friend_list">FriendListActivity</string>
     <string name="tvTitleInviteFriend">Invite a friend to play</string>
+    <string name="title_activity_game_play">GamePlayActivity</string>
+
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="camera">camera</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login">login</string>
+
+
 </resources>

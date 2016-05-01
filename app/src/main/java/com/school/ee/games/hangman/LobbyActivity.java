@@ -1,7 +1,6 @@
 package com.school.ee.games.hangman;
 
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,11 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import android.view.View.OnTouchListener;
@@ -38,7 +34,7 @@ public class LobbyActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Launch a new game with a random opponent", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Launch a new game with a random opponent (create Intent)", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -56,11 +52,10 @@ public class LobbyActivity extends AppCompatActivity {
 
                     case R.id.bInvite:
                         launchFriendList();
-
                         break;
 
                     default:
-                        //makeToast("Invalid View Id found!");
+                        makeToast("Games coming soon!");
                         break;
                 }
             }
@@ -68,12 +63,12 @@ public class LobbyActivity extends AppCompatActivity {
         OnTouchListener touchListener = new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction()== MotionEvent.ACTION_DOWN){
-                    int thisButtonId = v.getId();
-                    updateButtonBackground(thisButtonId);
+                int action = event.getActionMasked();
+                if (action == MotionEvent.ACTION_DOWN) {
+                    v.setBackgroundResource(R.drawable.buttons_selected);
                 }
-                else{
-                    updateButtonBackground(0);
+                if (action == MotionEvent.ACTION_UP) {
+                    v.setBackgroundResource(R.drawable.buttons);
                 }
                 return false;
             }
@@ -102,27 +97,17 @@ public class LobbyActivity extends AppCompatActivity {
         buttons[4] = bInvite;
 
         // Attach Listeners to the Views
-        bFindGame.setOnClickListener(bListener);
-        bInvite.setOnClickListener(bListener);
+        for(int i=0;i<buttons.length;i++){
+            buttons[i].setOnClickListener(bListener);
+            buttons[i].setOnTouchListener(touchListener);
+
+        }
+
 
         // Do stuff here
     }
 
-    public void updateButtonBackground(int id){
 
-        Button b;
-        Drawable bgResource;
-        for(int i=0;i<buttons.length;i++){
-            b = buttons[i];
-            if(b.getId()==id){
-                bgResource = getResources().getDrawable(R.drawable.buttons2);
-            }
-            else{
-                bgResource = getResources().getDrawable(R.drawable.buttons);
-            }
-            b.setBackground(bgResource);
-        }
-    }
 
     public void launchGameRoom(){
         Intent intent = new Intent(getBaseContext(),GameRoomActivity.class);
