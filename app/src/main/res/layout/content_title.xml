@@ -46,4 +46,9 @@
         android:layout_height="wrap_content"
         android:text="@string/bLogin"
         android:allowUndo="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvCurrentUser" />
 </LinearLayout>

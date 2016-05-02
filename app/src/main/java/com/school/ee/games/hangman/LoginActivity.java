@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Cursor cursor;
 
-    SharedPreferences prefs;
+    //SharedPreferences prefs;
 
     public final static String TAG = "LoginActivity";
 
@@ -72,8 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         addLoginData();
 
         cursor = loginDb.query();
-
-
 
     }
 
@@ -115,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this,"Username and Password do not match",Toast.LENGTH_SHORT).show();
                         }
 
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, TitleActivity.class);
                         intent.putExtra("username", current_user);
                         startActivity(intent);
 
@@ -159,18 +157,14 @@ public class LoginActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
-
-                            EditText etUsername = (EditText) findViewById(R.id.etUsername);
-                            EditText etPassword = (EditText) findViewById(R.id.etPassword);
-
-
-
+                     /*   try {
+                           *//* EditText etUsername = (EditText) findViewById(R.id.etUsername);
+                            EditText etPassword = (EditText) findViewById(R.id.etPassword);*//*
                             Log.d(TAG, "inserted Login info");
                         } catch (Exception e) {
                             //e.printStackTrace();
                             Log.d(TAG, e.getMessage());
-                        }
+                        }*/
 
                         String addU = etUsername.getText().toString();
                         String addP = etPassword.getText().toString();
@@ -179,8 +173,6 @@ public class LoginActivity extends AppCompatActivity {
                         //String image = intent.getStringExtra(IMAGE_STRING);
 
                         loginDb.addLoginData(addU,addP,null,0);
-
-
 
                     }
                 }

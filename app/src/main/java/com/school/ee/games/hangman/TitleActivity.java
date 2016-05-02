@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 
 public class TitleActivity extends AppCompatActivity {
+    private static final String TAG = "TitleActivity";
 
 
     // Testing some changes
@@ -24,6 +26,7 @@ public class TitleActivity extends AppCompatActivity {
     public Button bLogin;
     public TextView tvWelcome;
     private Button[] buttons;
+    public TextView tvCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,7 @@ public class TitleActivity extends AppCompatActivity {
         buttons[1] = bLogin;
 
         tvWelcome   = (TextView)findViewById(R.id.tvWelcome);
+        tvCurrentUser = (TextView)findViewById(R.id.tvCurrentUser);
 
         // Attach Listeners to the Views
         bPlay.setOnClickListener(bListener);
@@ -97,6 +101,13 @@ public class TitleActivity extends AppCompatActivity {
         bPlay.setOnTouchListener(touchListener);
         bLogin.setOnTouchListener(touchListener);
         // Do stuff here
+
+        Intent intent = getIntent();
+        String currentUser = intent.getStringExtra("username");
+        Log.d(TAG,"Current User: " + currentUser);
+
+        tvCurrentUser.setText("Current User: "+currentUser);
+
     }
 
     public void updateButtonBackground(int id){
