@@ -160,9 +160,9 @@ public class LoginActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                     /*   try {
-                           *//* EditText etUsername = (EditText) findViewById(R.id.etUsername);
-                            EditText etPassword = (EditText) findViewById(R.id.etPassword);*//*
+                        /*try {
+                            EditText etUsername = (EditText) findViewById(R.id.etUsername);
+                            EditText etPassword = (EditText) findViewById(R.id.etPassword);
                             Log.d(TAG, "inserted Login info");
                         } catch (Exception e) {
                             //e.printStackTrace();
@@ -171,11 +171,26 @@ public class LoginActivity extends AppCompatActivity {
 
                         String addU = etUsername.getText().toString();
                         String addP = etPassword.getText().toString();
+                        Log.d(TAG,"username: "+addU+" pass: "+addP);
 
-                        Intent intent = getIntent();
+                        //Intent intent = getIntent();
                         //String image = intent.getStringExtra(IMAGE_STRING);
 
-                        loginDb.addLoginData(addU,addP,null,0);
+                        if(addU.matches("") || addP.matches("")){
+                            Toast.makeText(LoginActivity.this,"Username or Password can't be left blank",Toast.LENGTH_SHORT).show();
+
+
+                        }
+                        else {
+
+                            loginDb.addLoginData(addU, addP, null, 0);
+                            Toast.makeText(LoginActivity.this,"User registered, go ahead and Login",Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(LoginActivity.this, TitleActivity.class);
+                            intent.putExtra("username", current_user);
+                            startActivity(intent);
+
+                        }
 
                     }
                 }
