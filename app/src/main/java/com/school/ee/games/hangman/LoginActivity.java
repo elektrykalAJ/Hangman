@@ -147,6 +147,9 @@ public class LoginActivity extends AppCompatActivity {
                             isLoggedIn = false;
                             Log.d(TAG, "isLoggedin: " + isLoggedIn);
                         }
+                        Intent intent = new Intent(LoginActivity.this, TitleActivity.class);
+                        intent.putExtra("username", current_user);
+                        startActivity(intent);
 
                     }
                 }
