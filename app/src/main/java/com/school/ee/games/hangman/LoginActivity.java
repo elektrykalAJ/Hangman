@@ -22,9 +22,16 @@ public class LoginActivity extends AppCompatActivity {
 
     public String current_user = null;
     public String current_pass = null;
+    public String get_user;
+    public String get_pass;
+
     public boolean isLoggedIn = false;
+    public boolean user_found = false;
+    public boolean login_match = false;
 
     LoginDatabase loginDb;
+
+    Cursor cursor;
 
     SharedPreferences prefs;
 
@@ -63,6 +70,11 @@ public class LoginActivity extends AppCompatActivity {
         button_pickImage = (Button) findViewById(R.id.button_pickImage);
         loginDb = new LoginDatabase(this);
         addLoginData();
+
+        cursor = loginDb.query();
+
+
+
     }
 
     public void addLoginData() {
@@ -71,12 +83,37 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        current_user = etUsername.getText().toString();
-                        Log.d(TAG, "USER " + current_user);
-                        current_pass = etPassword.getText().toString();
-                        Log.d(TAG, "Pass: " + current_pass);
-                        isLoggedIn = true;
-                        Log.d(TAG, "isLoggedin: " + isLoggedIn);
+                        while (cursor.moveToNext()){
+
+                            get_user = cursor.getString(cursor.getColumnIndex(LoginDatabase.USER_ID));
+                            Log.d(TAG,"user from db: "+ get_user );
+                            current_user = etUsername.getText().toString();
+                            if(get_user.contentEquals(current_user)){
+                                Log.d(TAG, "USER: " + current_user);
+                                user_found = true;
+                            }
+
+                            get_pass = cursor.getString(cursor.getColumnIndex(LoginDatabase.USER_PASS));
+                            Log.d(TAG,"pass from db: "+ get_pass );
+                            current_pass = etPassword.getText().toString();
+                            if(get_pass.contentEquals(current_pass)) {
+                                Log.d(TAG, "Pass: " + current_pass);
+                            }
+
+                            if(get_pass.contentEquals(current_pass) && get_user.contentEquals(current_user)) {
+                                isLoggedIn = true;
+                                Log.d(TAG, "isLoggedin: " + isLoggedIn);
+                                Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_SHORT).show();
+                                login_match = true;
+                            }
+
+                        }
+                        if(user_found == false){
+                            Toast.makeText(LoginActivity.this,"User not Found, Register?",Toast.LENGTH_SHORT).show();
+                        }
+                        if(login_match == false){
+                            Toast.makeText(LoginActivity.this,"Username and Password do not match",Toast.LENGTH_SHORT).show();
+                        }
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("username", current_user);
@@ -138,8 +175,10 @@ public class LoginActivity extends AppCompatActivity {
                         String addU = etUsername.getText().toString();
                         String addP = etPassword.getText().toString();
 
+                        Intent intent = getIntent();
+                        //String image = intent.getStringExtra(IMAGE_STRING);
 
-                        //loginDb.addLoginData(addU,addP,imgDecodableString,0);
+                        loginDb.addLoginData(addU,addP,null,0);
 
 
 
@@ -169,4 +208,5 @@ public class LoginActivity extends AppCompatActivity {
         );
 
     }
+
 }

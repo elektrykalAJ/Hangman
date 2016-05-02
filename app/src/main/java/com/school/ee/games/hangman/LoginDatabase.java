@@ -2,6 +2,7 @@ package com.school.ee.games.hangman;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.hardware.camera2.params.StreamConfigurationMap;
@@ -72,7 +73,13 @@ public class LoginDatabase {
         contentValues.put(USER_IMAGE,user_image);
         contentValues.put(USER_SCORE,user_score);
         db.insert(TABLE_LOGIN,"",contentValues);
-
-
+        //context.sendBroadcast(new Intent(LoginActivity.NEW_USER_ADDED));
     }
+
+    public Cursor query() {
+        db = dbHelper.getReadableDatabase();
+        return db.query(TABLE_LOGIN, null, null, null, null, null, TABLE_ID + " DESC", null);
+    }
+
+
 }
