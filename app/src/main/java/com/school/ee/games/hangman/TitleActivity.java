@@ -21,7 +21,7 @@ public class TitleActivity extends AppCompatActivity {
 
 
     // Testing some changes
-
+public Button bGoogle;
     public Button bPlay;
     public Button bLogin;
     public TextView tvWelcome;
@@ -60,6 +60,9 @@ public class TitleActivity extends AppCompatActivity {
                         launchLogin();
                         break;
 
+                    case R.id.bLaunchGoogleActivty:
+                        launchGoogleActivity();
+
                     default:
                         makeToast("Invalid View Id found!");
                         break;
@@ -86,6 +89,7 @@ public class TitleActivity extends AppCompatActivity {
         // Create the references to all of the Views
         bPlay       = (Button)findViewById(R.id.bPlay);
         bLogin      = (Button)findViewById(R.id.bLogin);
+        bGoogle     = (Button)findViewById(R.id.bLaunchGoogleActivty);
 
         buttons = new Button[2];
         buttons[0] = bPlay;
@@ -97,6 +101,7 @@ public class TitleActivity extends AppCompatActivity {
         // Attach Listeners to the Views
         bPlay.setOnClickListener(bListener);
         bLogin.setOnClickListener(bListener);
+        bGoogle.setOnClickListener(bListener);
 
         bPlay.setOnTouchListener(touchListener);
         bLogin.setOnTouchListener(touchListener);
@@ -145,7 +150,12 @@ public class TitleActivity extends AppCompatActivity {
         //overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
 
     }
-
+    public void launchGoogleActivity(){
+        Intent intent = new Intent(getBaseContext(),GooglePlayGamesSignIn.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        //overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
+    }
     public void makeToast(String msg) {
         Toast.makeText(TitleActivity.this, msg, Toast.LENGTH_SHORT).show();
     }

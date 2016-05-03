@@ -51,4 +51,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvCurrentUser" />
+
+    <Button
+        android:id="@+id/bLaunchGoogleActivty"
+        android:background="@drawable/buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Launch Google Activity"
+        android:allowUndo="true" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
 </LinearLayout>
