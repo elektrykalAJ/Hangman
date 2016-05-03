@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static String NEW_USER_ADDED;
     public String current_user = null;
     public String current_pass = null;
     public String get_user;
