@@ -42,6 +42,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
  */
 public abstract class BaseGameActivity extends FragmentActivity implements
         GameHelper.GameHelperListener {
+    /*TESTING */
 
     // The game helper object. This class is mainly a wrapper around this object.
     protected GameHelper mHelper;
