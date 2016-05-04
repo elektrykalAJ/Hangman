@@ -17,6 +17,7 @@
     <string name="camera">camera</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">login</string>
+    <string name="signin_failure">Something Failed!</string>
 
 
 </resources>
