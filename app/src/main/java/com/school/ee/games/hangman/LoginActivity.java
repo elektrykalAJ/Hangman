@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         button_logout = (Button) findViewById(R.id.button_logout);
         button_register = (Button) findViewById(R.id.button_register);
         button_camera = (Button) findViewById(R.id.button_camera);
-        button_pickImage = (Button) findViewById(R.id.button_pickImage);
+        //button_pickImage = (Button) findViewById(R.id.button_pickImage);
         loginDb = new LoginDatabase(this);
         addLoginData();
 
