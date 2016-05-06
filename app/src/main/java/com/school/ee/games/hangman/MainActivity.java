@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(id == R.id.activity_login){
+        /*if(id == R.id.activity_login){
             startActivity(new Intent(this,LoginActivity.class));
 
         }
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

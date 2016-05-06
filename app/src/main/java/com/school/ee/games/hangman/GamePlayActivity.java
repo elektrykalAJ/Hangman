@@ -198,11 +198,8 @@ public class GamePlayActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.activity_pick) {
 
-        }
-        else if (id == R.id.activity_pick){
             Intent intent = new Intent(GamePlayActivity.this,PickImageActivity.class);
             startActivity(intent);
         }

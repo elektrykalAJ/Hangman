@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         button_logout = (Button) findViewById(R.id.button_logout);
         button_register = (Button) findViewById(R.id.button_register);
         button_camera = (Button) findViewById(R.id.button_camera);
-        //button_pickImage = (Button) findViewById(R.id.button_pickImage);
+        button_pickImage = (Button) findViewById(R.id.button_pickImage);
         loginDb = new LoginDatabase(this);
         addLoginData();
 
@@ -190,6 +190,10 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActivity.this, TitleActivity.class);
                             intent.putExtra("username", current_user);
                             startActivity(intent);
+
+                            Intent i = getIntent();
+                            String imgDecodeable = intent.getStringExtra("imagePath");
+                            Log.d(TAG,"Image Path: " + imgDecodeable);
 
                         }
 

@@ -50,11 +50,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_camera"
         android:text="Camera"/>
-    <!--<Button
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_pickImage"
-        android:text="Select Image"/>-->
+        android:text="Select Image"/>
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="fill_parent"
