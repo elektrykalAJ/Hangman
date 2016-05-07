@@ -118,12 +118,9 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("username", current_user);
                         startActivity(intent);
 
-
                     }
 
                 }
-
-
         );
 
 
@@ -184,16 +181,17 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else {
 
-                            loginDb.addLoginData(addU, addP, null, 0);
+                            Intent i = getIntent();
+                            String imgDecodeable = i.getStringExtra("imagePath");
+                            Log.d(TAG,"Image Path: " + imgDecodeable);
+
+                            loginDb.addLoginData(addU, addP, imgDecodeable, 0);
                             Toast.makeText(LoginActivity.this,"User registered, go ahead and Login",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(LoginActivity.this, TitleActivity.class);
                             intent.putExtra("username", current_user);
                             startActivity(intent);
 
-                            Intent i = getIntent();
-                            String imgDecodeable = intent.getStringExtra("imagePath");
-                            Log.d(TAG,"Image Path: " + imgDecodeable);
 
                         }
 

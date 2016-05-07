@@ -27,7 +27,6 @@ public class PickImageActivity extends AppCompatActivity {
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +44,7 @@ public class PickImageActivity extends AppCompatActivity {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+
     }
 
     @Override
@@ -67,15 +67,17 @@ public class PickImageActivity extends AppCompatActivity {
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
-                Log.d(TAG,"image string: "+imgDecodableString);
+
                 cursor.close();
                 ImageView imgView = (ImageView) findViewById(R.id.pickImage);
                 // Set the Image in ImageView after decoding the String
                 imgView.setImageBitmap(BitmapFactory
                         .decodeFile(imgDecodableString));
 
-                Intent intent = new Intent(PickImageActivity.this,LoginActivity.class);
+                Intent intent = new Intent(this,LoginActivity.class);
                 intent.putExtra("imagePath",imgDecodableString);
+                Log.d(TAG,"image string: "+imgDecodableString);
+                startActivity(intent);
 
             } else {
                 Toast.makeText(this, "You haven't picked Image",
@@ -85,6 +87,7 @@ public class PickImageActivity extends AppCompatActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
+
 
     }
 

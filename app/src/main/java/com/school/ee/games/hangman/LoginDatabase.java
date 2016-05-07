@@ -49,7 +49,7 @@ public class LoginDatabase {
         @Override
         public void onCreate(SQLiteDatabase db) {
 
-            String sql_1 = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT,%s BLOB, %s INTEGER)",
+            String sql_1 = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT,%s TEXT, %s INTEGER)",
                     TABLE_LOGIN,TABLE_ID,USER_ID,USER_PASS,USER_IMAGE,USER_SCORE);
             db.execSQL(sql_1);
             Log.d(TAG,"LOGIN TABLE CREATED");
@@ -66,7 +66,7 @@ public class LoginDatabase {
         }
     }
 
-    public void addLoginData(String user_id, String user_pass, byte[] user_image,int user_score){
+    public void addLoginData(String user_id, String user_pass, String user_image,int user_score){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USER_ID,user_id);

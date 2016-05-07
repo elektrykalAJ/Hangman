@@ -1,9 +1,11 @@
 package com.school.ee.games.hangman;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -19,6 +21,7 @@ import static com.school.ee.games.hangman.R.drawable.tile_selected;
 
 public class GamePlayActivity extends AppCompatActivity {
 
+    private static final String TAG = "GamePlayActivity";
     public Button butA;
     public Button butB;
     public Button butC;
@@ -47,7 +50,9 @@ public class GamePlayActivity extends AppCompatActivity {
     public Button butZ;
     public Button[] tiles;  //  Array to hold all of the tiles for mass-access
 
-
+    Cursor cursor;
+    LoginDatabase loginDb;
+    String get_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,19 @@ public class GamePlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_play);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        //DB import current user and image
+        loginDb = new LoginDatabase(this);
+
+        cursor=loginDb.query();
+        get_user = cursor.getString(cursor.getColumnIndex(LoginDatabase.USER_ID));
+        Intent intent = getIntent();
+        String currentuser = intent.getStringExtra("username");
+        Log.d(TAG,"Username: "+currentuser);
+
+
+
 
     //////////////////////////////////////////////
     // Define the listeners for letter tiles    //
