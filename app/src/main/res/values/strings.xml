@@ -19,6 +19,7 @@
     <string name="login">login</string>
     <string name="signin_failure">Something Failed!</string>
     <string name="pickImage">pickImage</string>
+    <string name="title_activity_username">UsernameActivity</string>
 
 
 </resources>

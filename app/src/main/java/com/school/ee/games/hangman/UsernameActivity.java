@@ -1,12 +1,14 @@
 package com.school.ee.games.hangman;
 
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateUtils;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 public class UsernameActivity extends AppCompatActivity {
@@ -23,8 +25,10 @@ public class UsernameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_username);
+        loginDatabase = new LoginDatabase(this);
 
         cursor = loginDatabase.query();
+        adapter.changeCursor(cursor);
 
         list = (ListView) findViewById(R.id.list);
 

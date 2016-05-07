@@ -5,7 +5,7 @@
 
 
     <item
-        android:id="@+id/activity_pick"
-        android:title="Pick Image"
+        android:id="@+id/goToUsername"
+        android:title="Username Activity"
         />
 </menu>

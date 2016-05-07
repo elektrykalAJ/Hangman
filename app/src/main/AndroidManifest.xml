@@ -56,7 +56,10 @@
             android:exported="true" />
 
         <activity android:name=".GooglePlayGamesSignIn" />
-        <activity android:name=".UsernameActivity"></activity>
+        <activity
+            android:name=".UsernameActivity"
+            android:label="@string/title_activity_username"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

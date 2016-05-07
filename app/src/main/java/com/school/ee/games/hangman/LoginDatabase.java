@@ -79,7 +79,7 @@ public class LoginDatabase {
 
     public Cursor query() {
         db = dbHelper.getReadableDatabase();
-        return db.query(TABLE_LOGIN, null, null, null, null, null, TABLE_ID + " DESC", null);
+        return db.query(TABLE_LOGIN,null, null, null, null, null, TABLE_ID + " DESC", null);
     }
 
 

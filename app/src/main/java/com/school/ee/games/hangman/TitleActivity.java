@@ -18,10 +18,10 @@ import android.view.View.OnTouchListener;
 
 public class TitleActivity extends AppCompatActivity {
     private static final String TAG = "TitleActivity";
-
+    String currentUser;
 
     // Testing some changes
-public Button bGoogle;
+    public Button bGoogle;
     public Button bPlay;
     public Button bLogin;
     public TextView tvWelcome;
@@ -108,7 +108,7 @@ public Button bGoogle;
         // Do stuff here
 
         Intent intent = getIntent();
-        String currentUser = intent.getStringExtra("username");
+        currentUser = intent.getStringExtra("username");
         Log.d(TAG,"Current User: " + currentUser);
 
         tvCurrentUser.setText("Current User: "+currentUser);
@@ -161,7 +161,7 @@ public Button bGoogle;
     }
 
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_title, menu);
@@ -180,8 +180,20 @@ public Button bGoogle;
           //  return true;
         //}
 
-        return super.onOptionsItemSelected(item);
-    }*/
+            if (id == R.id.goToUsername) {
+                Log.d(TAG,"curUser: "+currentUser);
+                if(currentUser.equals("admin")) {
+
+
+                    Intent intent = new Intent(TitleActivity.this, UsernameActivity.class);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(TitleActivity.this,"Access Denied",Toast.LENGTH_SHORT).show();
+            }
+
+            return super.onOptionsItemSelected(item);
+    }
 
 
 
