@@ -55,7 +55,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".GooglePlayGamesSignIn"></activity>
+        <activity android:name=".GooglePlayGamesSignIn" />
+        <activity android:name=".UsernameActivity"></activity>
     </application>
 
 </manifest>
